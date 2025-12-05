@@ -1,299 +1,301 @@
-import { Header } from '@/components/layout/Header';
-import { Footer } from '@/components/layout/Footer';
-import { HeroSection } from '@/components/home/HeroSection';
-import { CourseCard } from '@/components/courses/CourseCard';
-import Image from 'next/image';
+"use client";
+
+import React from 'react';
 import Link from 'next/link';
+import { Navigation } from '@/components/zylera/navigation';
+import { EmailPopup } from '@/components/zylera/email-popup';
 import { Button } from '@/components/ui/button';
-import { Star, Award, Users, Sparkles, Trophy, Clock, MapPin } from 'lucide-react';
-
-// Mock data for MVP - will be replaced with API calls
-const courses = [
-  {
-    id: 1,
-    slug: 'heritage-course',
-    name: 'The Heritage Course',
-    tagline: 'A timeless Robert Trent Jones II masterpiece',
-    parTotal: 72,
-    yardageTotal: 7245,
-    difficultyRating: 73.5,
-    heroImageUrl: '/images/generated/heritage-course-clubhouse.png',
-    location: 'Main Campus',
-  },
-  {
-    id: 2,
-    slug: 'lakeside-course',
-    name: 'The Lakeside Course',
-    tagline: 'Spectacular lakefront golf experience',
-    parTotal: 71,
-    yardageTotal: 7120,
-    difficultyRating: 72.8,
-    heroImageUrl: '/images/generated/lakeside-course-bridge.png',
-    location: 'West Campus',
-  },
-  {
-    id: 3,
-    slug: 'ridge-course',
-    name: 'The Ridge Course',
-    tagline: 'Mountain vistas and dramatic elevation',
-    parTotal: 72,
-    yardageTotal: 6985,
-    difficultyRating: 71.5,
-    heroImageUrl: '/images/generated/ridge-course-mountain-view.png',
-    location: 'North Campus',
-  },
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Michael Anderson',
-    role: 'Golf Membership',
-    quote: 'Sterling Oaks has exceeded every expectation. The courses are impeccably maintained, and the staff makes you feel like family.',
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: 'Sarah Thompson',
-    role: 'Premier Membership',
-    quote: 'From the moment I joined, I knew this was special. The attention to detail and level of service is truly world-class.',
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: 'Robert Chen',
-    role: 'Golf Membership',
-    quote: 'The Heritage Course is my favorite. Every hole presents a unique challenge, and the scenery is absolutely breathtaking.',
-    rating: 5,
-  },
-];
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Sparkles, Heart, Brain, Shield, Star, ArrowRight, Mail } from 'lucide-react';
+import { blogArticles } from '@/lib/data/blog-articles';
+import { products } from '@/lib/data/products';
 
 export default function HomePage() {
+  const featuredArticles = blogArticles.slice(0, 3);
+  const featuredProducts = products.slice(0, 4);
+
   return (
-    <>
-      <Header />
+    <div className="min-h-screen bg-white">
+      <Navigation />
+      <EmailPopup />
 
-      <main>
-        {/* Hero Section */}
-        <HeroSection />
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-purple-gold opacity-95"></div>
 
-        {/* Championship Courses Section */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                Our Championship Courses
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 py-32 text-center">
+          <div className="max-w-4xl mx-auto animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+              Transform Your Intimate Life with Science-Backed Wellness Solutions
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+              Elevate Your Intimate Wellness Journey
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-primary font-bold text-lg px-8 py-6 shadow-xl"
+                asChild
+              >
+                <Link href="/ai-assistant">
+                  Start Your Journey
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white/10 hover:bg-white/20 text-white border-2 border-white font-semibold text-lg px-8 py-6"
+                asChild
+              >
+                <Link href="/blog">Explore Resources</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+              Why Choose Zylera?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Your trusted partner in intimate wellness, combining expert guidance with premium solutions
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: Brain,
+                title: 'AI-Powered Guidance',
+                description: 'Get personalized advice from our anonymous AI assistant, available 24/7 for your questions.'
+              },
+              {
+                icon: Shield,
+                title: 'Complete Privacy',
+                description: 'Your wellness journey is confidential. Ask questions freely without judgment or embarrassment.'
+              },
+              {
+                icon: Sparkles,
+                title: 'Science-Backed',
+                description: 'All recommendations based on clinical research and expert-approved wellness practices.'
+              },
+              {
+                icon: Heart,
+                title: 'Curated Products',
+                description: 'Premium selection of tested products to enhance your intimate wellness naturally.'
+              }
+            ].map((benefit, index) => (
+              <Card key={index} className="border-2 hover:border-accent transition-all hover:shadow-purple-lg">
+                <CardHeader>
+                  <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-4">
+                    <benefit.icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl font-serif">{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{benefit.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Guides Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+                Featured Wellness Guides
               </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Experience world-class golf on three distinctly challenging courses, each designed to test your skills and reward precision
+              <p className="text-xl text-muted-foreground">
+                Expert insights for your intimate wellness journey
               </p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {courses.map((course) => (
-                <CourseCard key={course.id} {...course} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Membership CTA Section */}
-        <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/images/generated/membership-golfers-community.png"
-              alt="Sterling Oaks Members"
-              fill
-              className="object-cover opacity-20"
-            />
-          </div>
-          <div className="container mx-auto px-4 relative z-10 text-center">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-              Elevate Your Game at Sterling Oaks
-            </h2>
-            <p className="text-lg mb-8 max-w-3xl mx-auto text-primary-foreground/90 leading-relaxed">
-              Join a community of passionate golfers and enjoy unparalleled access to our world-class facilities. Our memberships include priority tee times, exclusive events, access to the elite practice academy, and unforgettable experiences. Discover the privilege of belonging to Sterling Oaks Golf Club.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 py-6"
-            >
-              <Link href="/membership">Discover Membership Tiers</Link>
+            <Button variant="ghost" className="text-accent hover:text-primary" asChild>
+              <Link href="/blog">
+                View All Articles
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
             </Button>
           </div>
-        </section>
 
-        {/* Facilities Section */}
-        <section className="py-20 bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                World-Class Facilities
-              </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Every detail designed to enhance your golfing experience
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Trophy className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold mb-3">Championship Courses</h3>
-                <p className="text-muted-foreground text-sm">
-                  Three award-winning courses designed by Robert Trent Jones II
-                </p>
-              </div>
-
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Sparkles className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold mb-3">Practice Facilities</h3>
-                <p className="text-muted-foreground text-sm">
-                  State-of-the-art driving range, putting greens, and short game areas
-                </p>
-              </div>
-
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Award className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold mb-3">Golf Academy</h3>
-                <p className="text-muted-foreground text-sm">
-                  Expert instruction from PGA professionals with cutting-edge technology
-                </p>
-              </div>
-
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold mb-3">Clubhouse & Dining</h3>
-                <p className="text-muted-foreground text-sm">
-                  Elegant clubhouse with fine dining and private event spaces
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-                What Our Members Say
-              </h2>
-              <div className="w-24 h-1 bg-accent mx-auto mb-6" />
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Join a community of passionate golfers who call Sterling Oaks home
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {testimonials.map((testimonial) => (
-                <div
-                  key={testimonial.id}
-                  className="bg-card p-8 rounded-lg border shadow-md hover:shadow-xl transition-shadow"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-accent text-accent" />
-                    ))}
-                  </div>
-                  <p className="text-foreground mb-6 leading-relaxed italic">
-                    &quot;{testimonial.quote}&quot;
-                  </p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredArticles.map((article) => (
+              <Card key={article.id} className="hover-lift overflow-hidden">
+                <div className="h-48 bg-gradient-purple relative">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Sparkles className="w-16 h-16 text-white/30" />
                   </div>
                 </div>
-              ))}
+                <CardHeader>
+                  <div className="text-sm text-accent font-semibold mb-2">{article.category}</div>
+                  <CardTitle className="text-xl font-serif line-clamp-2">{article.title}</CardTitle>
+                  <CardDescription className="line-clamp-3">{article.excerpt}</CardDescription>
+                </CardHeader>
+                <CardFooter>
+                  <Button variant="link" className="text-accent hover:text-primary p-0" asChild>
+                    <Link href={`/blog/${article.slug}`}>
+                      Read More
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product Spotlights Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-end mb-12">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+                Premium Product Selection
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Carefully curated wellness products to enhance your intimate life
+              </p>
+            </div>
+            <Button variant="ghost" className="text-accent hover:text-primary" asChild>
+              <Link href="/shop">
+                Browse Shop
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {featuredProducts.map((product) => (
+              <Card key={product.id} className="hover-lift overflow-hidden">
+                <div className="h-56 bg-gradient-gold relative">
+                  <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 shadow-md">
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 fill-accent text-accent" />
+                      <span className="text-sm font-semibold">{product.rating}</span>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Heart className="w-20 h-20 text-white/20" />
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-lg font-serif line-clamp-2">{product.name}</CardTitle>
+                  <CardDescription className="line-clamp-2">{product.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-baseline gap-2 mb-4">
+                    <span className="text-2xl font-bold text-primary">${product.price}</span>
+                    <span className="text-sm text-muted-foreground">({product.reviews} reviews)</span>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full bg-gradient-purple text-white hover:opacity-90" asChild>
+                    <Link href={`/shop/${product.slug}`}>View Details</Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="py-20 bg-gradient-purple text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <Mail className="w-16 h-16 mx-auto mb-6 text-accent" />
+            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+              Get Your Free Intimacy Guide
+            </h2>
+            <p className="text-xl mb-8 text-white/90">
+              5 Science-Backed Ways to Boost Intimacy Tonight
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-primary font-bold px-8">
+                Subscribe
+              </Button>
+            </div>
+            <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm text-white/80">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" className="rounded" defaultChecked />
+                <span>Libido Tips</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" className="rounded" defaultChecked />
+                <span>Relationship Advice</span>
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" className="rounded" />
+                <span>Product Updates</span>
+              </label>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-primary text-primary-foreground">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div className="space-y-2">
-                <div className="text-5xl md:text-6xl font-bold text-accent">30+</div>
-                <div className="text-sm md:text-base text-primary-foreground/90">Years of Excellence</div>
+      {/* Footer */}
+      <footer className="bg-primary text-white py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Sparkles className="w-6 h-6 text-accent" />
+                <span className="text-2xl font-serif font-bold">Zylera</span>
               </div>
-              <div className="space-y-2">
-                <div className="text-5xl md:text-6xl font-bold text-accent">500+</div>
-                <div className="text-sm md:text-base text-primary-foreground/90">Member Families</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-5xl md:text-6xl font-bold text-accent">15+</div>
-                <div className="text-sm md:text-base text-primary-foreground/90">Tournament Championships</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-5xl md:text-6xl font-bold text-accent">75K+</div>
-                <div className="text-sm md:text-base text-primary-foreground/90">Rounds Played Annually</div>
-              </div>
+              <p className="text-white/80">
+                Your trusted partner in intimate wellness and sexual health.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Explore</h3>
+              <ul className="space-y-2 text-white/80">
+                <li><Link href="/ai-assistant" className="hover:text-accent">AI Assistant</Link></li>
+                <li><Link href="/blog" className="hover:text-accent">Blog</Link></li>
+                <li><Link href="/shop" className="hover:text-accent">Shop</Link></li>
+                <li><Link href="/resources" className="hover:text-accent">Resources</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-white/80">
+                <li><Link href="/resources" className="hover:text-accent">Libido Quiz</Link></li>
+                <li><Link href="/resources" className="hover:text-accent">Intimacy Quiz</Link></li>
+                <li><Link href="/resources" className="hover:text-accent">Stress Quiz</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-white/80">
+                <li><Link href="/privacy" className="hover:text-accent">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-accent">Terms of Service</Link></li>
+                <li><Link href="/contact" className="hover:text-accent">Contact</Link></li>
+              </ul>
             </div>
           </div>
-        </section>
-
-        {/* Quick Links Section */}
-        <section className="py-20 bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Events */}
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-                  <Clock className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-serif font-semibold mb-4">Events Calendar</h3>
-                <p className="text-muted-foreground mb-6">
-                  Join us for tournaments, clinics, and exclusive member events throughout the year.
-                </p>
-                <Button asChild variant="outline">
-                  <Link href="/events">View Events</Link>
-                </Button>
-              </div>
-
-              {/* Academy */}
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-                  <Award className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-serif font-semibold mb-4">Golf Academy</h3>
-                <p className="text-muted-foreground mb-6">
-                  Improve your game with our PGA professionals and state-of-the-art training facilities.
-                </p>
-                <Button asChild variant="outline">
-                  <Link href="/academy">Learn More</Link>
-                </Button>
-              </div>
-
-              {/* Contact */}
-              <div className="bg-card p-8 rounded-lg border text-center hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-full mb-4">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-serif font-semibold mb-4">Visit Us</h3>
-                <p className="text-muted-foreground mb-6">
-                  Schedule a tour or contact us to learn more about membership opportunities.
-                </p>
-                <Button asChild variant="outline">
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
-              </div>
-            </div>
+          <div className="border-t border-white/20 pt-8 text-center text-white/60">
+            <p>&copy; 2025 Zylera. All rights reserved. Your wellness journey, our priority.</p>
           </div>
-        </section>
-      </main>
-
-      <Footer />
-    </>
+        </div>
+      </footer>
+    </div>
   );
 }

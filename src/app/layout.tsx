@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryProvider } from "@/components/query-provider";
@@ -8,22 +8,68 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-// Elegant serif font for headings
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+// Elegant serif font for headings - Luxury aesthetic
+const cormorant = Cormorant_Garamond({
+  variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-// Clean sans-serif for body text
+// Clean sans-serif for body text - Professional readability
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-primary",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Sterling Oaks Golf Club | Championship Golf Experience",
-  description: "Experience championship golf on three award-winning courses designed by Robert Trent Jones II. Premium memberships, events, and world-class amenities.",
+  title: "Zylera | Elevate Your Intimate Wellness Journey - Sexual Health & Libido Enhancement",
+  description: "Transform your intimate life with science-backed wellness solutions. Expert guidance, AI assistant, premium products, and confidential resources for sexual wellness, libido improvement, and relationship intimacy. Discover natural ways to increase sex drive, boost libido, and enhance intimate experiences.",
+  keywords: [
+    "sexual wellness",
+    "libido boosters",
+    "intimacy tips",
+    "increase sex drive",
+    "natural libido supplements",
+    "relationship intimacy",
+    "sexual health products",
+    "wellness supplements",
+    "intimate wellness",
+    "sex drive improvement",
+    "how to boost libido naturally",
+    "sexual wellness products",
+    "intimacy enhancement",
+    "libido supplements for women",
+    "libido supplements for men",
+    "stress and sex drive",
+    "improve sexual health",
+    "relationship wellness",
+    "sexual confidence",
+    "intimate health"
+  ],
+  openGraph: {
+    title: "Zylera - Premium Sexual Wellness & Libido Enhancement",
+    description: "Science-backed solutions for intimate wellness, libido improvement, and sexual health. Anonymous AI guidance, expert articles, and curated products.",
+    type: "website",
+    siteName: "Zylera",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zylera - Elevate Your Intimate Wellness",
+    description: "Science-backed sexual wellness solutions, AI guidance, and expert resources for libido enhancement and intimate health.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  alternates: {
+    canonical: "https://zylera.com",
+  },
 };
 
 export default function RootLayout({
@@ -34,10 +80,49 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Zylera",
+              "description": "Premium sexual wellness platform combining educational content, AI guidance, and curated products for intimate health and libido enhancement.",
+              "url": "https://zylera.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://zylera.com/blog?search={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Zylera",
+              "description": "Sexual wellness and intimate health platform",
+              "url": "https://zylera.com",
+              "logo": "https://zylera.com/logo.png",
+              "sameAs": [
+                "https://twitter.com/zylera",
+                "https://facebook.com/zylera",
+                "https://instagram.com/zylera"
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Support",
+                "email": "support@zylera.com"
+              }
+            })
+          }}
+        />
       </head>
       <body
-        className={`${inter.variable} ${playfair.variable} antialiased font-sans`}
+        className={`${inter.variable} ${cormorant.variable} antialiased font-sans`}
       >
         <QueryProvider>
           <ZyloProvider>

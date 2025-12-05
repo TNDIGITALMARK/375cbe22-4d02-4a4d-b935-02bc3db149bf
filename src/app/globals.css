@@ -1,60 +1,87 @@
 @import "tailwindcss";
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Zylera Luxury Sexual Wellness Design System
+   Premium aesthetic: Deep Purple, Gold, White
+   Psychology: Purple = Luxury & Mystery, Gold = Premium Value, White = Purity & Trust
 */
 
-:root {
-  /* Premium golf club color palette */
-  /* Off-white background with charcoal text */
-  --background: 40 20% 97%;
-  --foreground: 0 0% 15%;
+/* Google Fonts - Elegant typography for luxury wellness brand */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-  /* Clean white cards with charcoal text */
+:root {
+  /* Custom Font Variables */
+  --font-primary: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Cormorant Garamond', ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, 'Courier New', monospace;
+
+  /* Zylera Luxury Color Palette - HSL Format */
+  /* Deep Purple Primary - #2D1B69 converted to HSL */
+  --background: 0 0% 100%;
+  --foreground: 263 58% 26%;
+
+  /* Pure white cards with deep purple text */
   --card: 0 0% 100%;
-  --card-foreground: 0 0% 15%;
+  --card-foreground: 263 58% 26%;
 
   /* Popovers with white background */
   --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 15%;
+  --popover-foreground: 263 58% 26%;
 
-  /* Primary: Deep forest green with white text */
-  --primary: 155 30% 25%;
+  /* Primary: Deep Purple #2D1B69 with white text */
+  --primary: 263 58% 26%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Gold/champagne accent */
-  --secondary: 45 65% 60%;
-  --secondary-foreground: 0 0% 15%;
+  /* Secondary: Luxury Gold #D4AF37 with deep purple text */
+  --secondary: 45 64% 53%;
+  --secondary-foreground: 263 58% 26%;
 
-  /* Muted: Light green-gray with darker text */
-  --muted: 155 15% 92%;
-  --muted-foreground: 0 0% 40%;
+  /* Muted: Light purple-tinted gray */
+  --muted: 263 20% 95%;
+  --muted-foreground: 263 20% 40%;
 
-  /* Accent: Gold for highlights */
-  --accent: 45 75% 55%;
-  --accent-foreground: 0 0% 15%;
+  /* Accent: Rich Gold for highlights and CTAs */
+  --accent: 45 64% 53%;
+  --accent-foreground: 263 58% 26%;
 
-  /* Destructive: Elegant red */
+  /* Destructive: Elegant muted red */
   --destructive: 0 65% 48%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Borders: Soft neutral */
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 155 30% 25%;
+  /* Borders: Subtle purple-tinted */
+  --border: 263 15% 90%;
+  --input: 263 15% 90%;
+  --ring: 45 64% 53%;
 
-  /* Slightly more rounded for elegance */
-  --radius: 0.5rem;
+  /* Rounded corners for modern luxury */
+  --radius: 0.75rem;
 
-  /* Sidebar: Clean white with black text */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
+  /* Sidebar: Deep purple with gold accents */
+  --sidebar-background: 263 58% 26%;
+  --sidebar-foreground: 0 0% 100%;
+  --sidebar-primary: 45 64% 53%;
+  --sidebar-primary-foreground: 263 58% 26%;
+  --sidebar-accent: 263 58% 22%;
+  --sidebar-accent-foreground: 0 0% 100%;
+  --sidebar-border: 263 40% 35%;
+  --sidebar-ring: 45 64% 53%;
+
+  /* Zylera Custom Color Variables */
+  --color-purple-deep: 263 58% 26%;
+  --color-purple-light: 263 40% 85%;
+  --color-gold: 45 64% 53%;
+  --color-gold-light: 45 64% 70%;
+  --color-white: 0 0% 100%;
+
+  /* Shadow System */
+  --shadow-sm: 0 1px 3px 0 rgba(45, 27, 105, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(45, 27, 105, 0.12);
+  --shadow-lg: 0 12px 24px -4px rgba(45, 27, 105, 0.15);
+  --shadow-xl: 0 20px 40px -8px rgba(45, 27, 105, 0.2);
+
+  /* Gradient System for luxury feel */
+  --gradient-purple-gold: linear-gradient(135deg, hsl(263 58% 26%) 0%, hsl(263 58% 35%) 50%, hsl(45 64% 53%) 100%);
+  --gradient-purple: linear-gradient(135deg, hsl(263 58% 26%) 0%, hsl(263 58% 35%) 100%);
+  --gradient-gold: linear-gradient(135deg, hsl(45 64% 53%) 0%, hsl(45 80% 65%) 100%);
 }
 
 .dark {
@@ -178,25 +205,95 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Premium golf club typography */
+/* Zylera Typography System - Luxury Wellness Aesthetic */
 .font-sans {
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-primary);
 }
 
 .font-serif {
-  font-family: var(--font-playfair), ui-serif, Georgia, serif;
+  font-family: var(--font-heading);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), ui-serif, Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+/* Typography Scale - Elegant hierarchy for wellness content */
+html {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.7;
   color: hsl(var(--foreground));
 }
 
-/* Clean button styles */
-button {
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: hsl(var(--primary));
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 2.75rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1.25em;
+  line-height: 1.75;
+}
+
+a {
+  color: hsl(var(--accent));
+  text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--primary));
+}
+
+strong, b {
+  font-weight: 600;
+  color: hsl(var(--primary));
+}
+
+/* Button styles for luxury CTAs */
+button {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
 }
 
 /* Subtle shadows for depth */
@@ -282,11 +379,84 @@ img {
   transition: opacity 0.3s ease-in-out;
 }
 
-/* Premium gradient backgrounds */
-.gradient-gold {
-  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--secondary)) 100%);
+/* Zylera Luxury Gradient Backgrounds */
+.gradient-purple-gold {
+  background: var(--gradient-purple-gold);
 }
 
-.gradient-green {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(155 35% 30%) 100%);
+.gradient-purple {
+  background: var(--gradient-purple);
+}
+
+.gradient-gold {
+  background: var(--gradient-gold);
+}
+
+/* Form element defaults for sexual wellness brand */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+textarea,
+select {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: hsl(var(--accent));
+  box-shadow: 0 0 0 3px hsla(var(--accent) / 0.1);
+}
+
+/* Mobile-first responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Utility classes for Zylera brand */
+.text-gradient {
+  background: var(--gradient-purple-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-purple {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-purple-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-purple-xl {
+  box-shadow: var(--shadow-xl);
 }
