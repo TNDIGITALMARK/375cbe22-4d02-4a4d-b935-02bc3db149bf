@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { QueryProvider } from "@/components/query-provider";
@@ -8,18 +8,18 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-// Elegant serif font for headings - Luxury aesthetic
-const cormorant = Cormorant_Garamond({
+// Modern serif font for headings - Classic elegance with modern twist
+const playfair = Playfair_Display({
   variable: "--font-heading",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 // Clean sans-serif for body text - Professional readability
 const inter = Inter({
   variable: "--font-primary",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -161,13 +161,13 @@ export default function RootLayout({
         {/* PHOENIX_EDITOR_INJECTION_END */}
       </head>
       <body
-        className={`${inter.variable} ${cormorant.variable} antialiased font-sans`}
+        className={`${inter.variable} ${playfair.variable} antialiased font-sans`}
       >
         <QueryProvider>
           <ZyloProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme="light"
+              defaultTheme="dark"
               enableSystem
               disableTransitionOnChange
             >

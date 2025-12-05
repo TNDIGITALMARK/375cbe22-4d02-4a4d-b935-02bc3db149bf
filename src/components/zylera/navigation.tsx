@@ -29,7 +29,7 @@ export function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-md'
+          ? 'bg-card/95 backdrop-blur-md shadow-dark border-b border-border'
           : 'bg-transparent'
       }`}
     >
@@ -37,10 +37,10 @@ export function Navigation() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-purple-gold flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-red flex items-center justify-center glow-red">
               <Sparkles className="w-5 h-5 text-white" />
             </div>
-            <span className="text-2xl font-serif font-bold text-primary group-hover:text-gradient transition-all">
+            <span className="text-2xl font-serif font-bold text-foreground group-hover:text-gradient transition-all">
               Zylera
             </span>
           </Link>
@@ -56,14 +56,14 @@ export function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Button className="bg-gradient-gold hover:opacity-90 text-primary font-semibold">
+            <Button className="bg-accent hover:bg-accent/90 text-foreground font-semibold glow-red">
               Get Started
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-primary"
+            className="md:hidden p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -73,7 +73,7 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-6 animate-fade-in">
+          <div className="md:hidden pb-6 animate-fade-in bg-card/95 backdrop-blur-md">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
@@ -85,7 +85,7 @@ export function Navigation() {
                   {link.label}
                 </Link>
               ))}
-              <Button className="bg-gradient-gold hover:opacity-90 text-primary font-semibold w-full">
+              <Button className="bg-accent hover:bg-accent/90 text-foreground font-semibold w-full glow-red">
                 Get Started
               </Button>
             </div>
