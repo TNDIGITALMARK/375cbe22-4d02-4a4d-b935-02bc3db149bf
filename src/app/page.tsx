@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Navigation } from '@/components/zylera/navigation';
 import { EmailPopup } from '@/components/zylera/email-popup';
 import { Button } from '@/components/ui/button';
@@ -39,7 +40,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-foreground font-bold text-lg px-8 py-6 glow-red"
+                className="bg-accent hover:bg-accent/90 text-white font-bold text-lg px-8 py-6 glow-red"
                 asChild
               >
                 <Link href="/ai-assistant">
@@ -261,10 +262,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-6 h-6 text-accent" />
-                <span className="text-2xl font-serif font-bold">Zylera</span>
-              </div>
+              <Link href="/" className="inline-block mb-4">
+                <Image
+                  src="/generated/zylera-logo.png"
+                  alt="Zylera"
+                  width={120}
+                  height={48}
+                  className="h-12 w-auto"
+                />
+              </Link>
               <p className="text-muted-foreground">
                 Your trusted partner in intimate wellness and sexual health.
               </p>

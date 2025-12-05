@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
@@ -36,13 +37,15 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-red flex items-center justify-center glow-red">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-2xl font-serif font-bold text-foreground group-hover:text-gradient transition-all">
-              Zylera
-            </span>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/generated/zylera-logo.png"
+              alt="Zylera"
+              width={140}
+              height={56}
+              className="h-14 w-auto transition-all group-hover:opacity-80"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
